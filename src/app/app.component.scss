@@ -1,0 +1,881 @@
+/*----------------------Dimension------------------------------------*/
+$sidebar-accordion-gap-outer: 41px;
+$sidebar-accordion-gap-inner: 66.09px;
+
+$accordion-main-width: 1036px;
+$accordion-main-height: 605px;
+$containers-padding-top-all: 13px;
+$containers-padding-bottom-all: 13px;
+$containers-padding-left-all: 20.09px;
+
+$accordion-font-main: 15px;
+$accordion-font-inner: 14px;
+$accordion-font-button: 13px;
+$accordion-font-symbols: 10px;
+$accordion-font-fa: 14px;
+
+$accordion-item-padding-top: 24.5px;
+$accordion-item-padding-bottom: 14.5px;
+$accordion-item-padding-left: 25.09px;
+$accordion-item-padding-right-RHS: 24px;
+
+$accordion-table-margin-top: 16.05px;
+$accordion-table-margin-bottom: 16px;
+$accordion-table-padding-top: 15.5px;
+$accordion-table-padding-bottom: 13.5px;
+$accordion-table-padding-left: 21px;
+$accordion-table-padding-right: 21px;
+
+$button-margin-top: 15.5px;
+$button-margin-bottom: 15.5px;
+$button-margin-right: 16px;
+$button-width: 101px;
+$button-height: 33px;
+
+$modal-width: 480px;
+$modal-height: 347px;
+$modal-content-padding-top: 15px;
+$modal-content-padding-bottom: 13.5px;
+$modal-content-padding-left: 35px;
+
+/*-------------------------Mixin------------------------------------*/
+@mixin main-item-dimension {
+  //max-width: $accordion-main-width;
+  min-height: $accordion-main-height;
+}
+
+@mixin main-item-header-dimension {
+  padding-top: $containers-padding-top-all;
+  padding-bottom: $containers-padding-bottom-all;
+  padding-left: $containers-padding-left-all;
+  padding-right: 20.09px;
+}
+
+@mixin accordion-item-dimension {
+  padding-top: $accordion-item-padding-top;
+  padding-left: $accordion-item-padding-left;
+}
+
+@mixin accordion-item-spacefiller-dimension {
+  padding-bottom: $accordion-item-padding-bottom;
+}
+
+@mixin table-dimension {
+  border-collapse: collapse;
+}
+
+@mixin table-inner-dimension {
+  padding-top: $accordion-table-padding-top;
+  padding-bottom: $accordion-table-padding-bottom;
+  padding-left: $accordion-table-padding-left;
+  padding-right: $accordion-table-padding-right;
+
+  & div:nth-child(1) {
+    //border: solid salmon;
+
+    display: inline;
+    margin-left: 0px;
+    margin-right: 0.5em;
+  }
+
+  & div {
+    //border: solid cyan;
+
+    display: inline;
+    margin-left: 0.5em;
+  }
+
+  &:nth-child(1) {
+    text-align: left;
+    //width: 65%;
+  }
+
+  &:nth-child(2) {
+    text-align: center;
+    //width: auto;
+  }
+
+  &:nth-child(3) {
+    text-align: center;
+    //width: auto;
+  }
+
+  &:nth-child(4) {
+    //text-align: right;
+
+    //border: solid 1px red;
+
+    & i:nth-child(1) {
+      //border: solid yellowgreen;
+    }
+
+    & i:nth-child(2) {
+      //border: solid orchid;
+    }
+  }
+}
+
+@mixin button-dimension {
+  width: $button-width;
+  height: $button-height;
+
+  margin-top: $button-margin-top;
+  margin-bottom: $button-margin-bottom;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+
+  .accordion-list &:nth-child(1) {
+    //button-description-text distance with its button
+    margin-right: 10px;
+  }
+
+  .accordion-list &:nth-child(2) {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #417bca;
+    border-radius: 2px;
+
+    //margin-right: $button-margin-right;
+  }
+
+}
+
+@mixin button-dimension-responsive {
+  width: $button-width;
+  height: $button-height;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/*-------------------------Styling------------------------------------*/
+
+/*main item*/
+.main-item {
+  //border: solid lightblue;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+
+  @media screen and (max-width: 652px) {
+
+    .accordion-list {
+      //border: solid royalblue;
+      padding-right: 30px;
+    }
+
+    .accordion-item {
+      //border: none;
+      padding-left: $accordion-item-padding-left;
+    }
+
+    .buttons {
+      background: #f2f6f9 0% 0% no-repeat padding-box;
+      //background: lightgrey;
+      //border: solid orange;
+
+      display: flex;
+      flex-direction: column;
+      white-space: nowrap;
+
+      .button-group-1 {
+        //border: solid magenta;
+
+        display: flex;
+        justify-content: flex-end;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 16px;
+
+        .dragdroptip {
+          display: none;
+        }
+      }
+
+      .button-group-2 {
+        //border: solid indigo;
+
+        display: flex;
+        justify-content: flex-end;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+
+        flex-wrap: wrap;
+      }
+
+      .button1 {
+        background: #ffffff 0% 0% no-repeat padding-box;
+        border: 1px solid #417bca;
+        border-radius: 2px;
+
+        @include button-dimension-responsive;
+      }
+
+      .button2 {
+        background: #ffffff 0% 0% no-repeat padding-box;
+        border: 1px solid #417bca;
+        border-radius: 2px;
+
+        @include button-dimension-responsive;
+      }
+
+      .button-text1 {
+        font: Bold 14px/16px Arial;
+        letter-spacing: 0px;
+        color: #676c71;
+
+        margin-right: 10px;
+
+        @include button-dimension-responsive;
+        width: 140px;
+        justify-content: flex-end;
+
+        //border: solid red;
+
+        flex-grow: 1;
+
+        div {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          //border: solid purple;
+        }
+
+      }
+
+      .button-text2 {
+        font: Bold 14px/16px Arial;
+        letter-spacing: 0px;
+        color: #676c71;
+
+        margin-right: 10px;
+
+        @include button-dimension-responsive;
+        width: 140px;
+        justify-content: flex-end;
+
+        //border: solid greenyellow;
+
+        flex-grow: 1;
+
+        div {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          //border: solid purple;
+        }
+      }
+    }
+
+    /////////////////////////////////////////////////table//////////////////////////////////////////
+    table {
+      border-collapse: collapse;
+
+      //border: solid 1px blue;
+
+      width: 100%;
+      display: block;
+
+      thead {
+        width: 100%;
+        display: block;
+
+        tr {
+          display: flex;
+
+          //border: solid 3px gold;
+
+          width: 100%;
+
+          th {
+            max-width: 550px;
+
+            &:nth-child(1) {
+              display: flex;
+              //border: solid 3px purple;
+
+              width: 100%;
+
+              padding-top: $accordion-table-padding-top;
+              padding-bottom: $accordion-table-padding-bottom;
+              padding-left: $accordion-table-padding-left;
+
+              i {
+                margin-left: 7px;
+                margin-top: 4px;
+              }
+            }
+
+            &:nth-child(2) {
+              display: none;
+            }
+
+            &:nth-child(3) {
+              display: none;
+            }
+
+            &:nth-child(4) {
+              display: none;
+            }
+          }
+        }
+      }
+
+      tbody {
+        width: 100%;
+        display: block;
+
+        tr {
+
+          display: flex;
+          flex-wrap: wrap;
+
+          width: 100%;
+
+          //table cell
+          td {
+            max-width: 550px;
+
+            &:nth-child(1) {
+              width: 70%;
+
+              display: flex;
+              justify-content: flex-start;
+              //border: solid 1px red;
+              //background: lightyellow;
+
+              padding-top: $accordion-table-padding-top;
+              padding-bottom: $accordion-table-padding-bottom;
+              padding-left: $accordion-table-padding-left;
+
+              div {
+                //border: solid salmon;
+
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+
+              i {
+                margin-right: 1em;
+                font-size: 14px;
+                letter-spacing: 0px;
+                color: #ff0000;
+              }
+            }
+
+            &:nth-child(2) {
+              width: 30%;
+
+              display: flex;
+              justify-content: flex-end;
+              //border: solid 1px cyan;
+
+              padding-right: 20px;
+              padding-top: $accordion-table-padding-top;
+              padding-bottom: $accordion-table-padding-bottom;
+            }
+
+            &:nth-child(3) {
+              display: none;
+            }
+
+            &:nth-child(4) {
+              width: 100%;
+
+              display: flex;
+              justify-content: space-around;
+              //border: solid 1px green;
+              border-bottom: solid #e8eff6 1px;
+
+              i {
+                margin-bottom: 10px;
+                margin-top: 9px;
+
+                font-size: 14px;
+                letter-spacing: 0px;
+                color: #676c71;
+              }
+
+              div {
+                //border-right: solid purple 1px;
+                border-right: solid #E8EFF6 1px;
+                height: 25px;
+                margin-bottom: 5.5px;
+                margin-top: 2.5px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    //////////////////////////////////////////////table end////////////////////////////////////
+  }
+
+  display: flex;
+  flex-direction: column;
+  height: 0px;
+  @include main-item-dimension;
+
+  &-header {
+    background: #f2f6f9 0% 0% no-repeat padding-box;
+
+    font: Bold 15px/17px Arial;
+    letter-spacing: 0px;
+    color: #000000;
+
+    @include main-item-header-dimension;
+    word-break: break-all;
+  }
+}
+
+////////////////////////////////////////////Responsive End///////////////////////////////
+/*accordion item*/
+.accordion-list {
+  input {
+    display: none;
+  }
+
+  //border: solid greenyellow;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-color: #d6d7da;
+  scrollbar-width: thin;
+
+  padding-right: 24px;
+}
+
+.accordion-item {
+  //border: solid red;
+
+  @include accordion-item-dimension;
+
+  &-spacefiller {
+    //border: solid plum;
+    border-bottom: solid #e8eff6 1px;
+
+    @include accordion-item-spacefiller-dimension;
+  }
+
+  &-content {
+    //border: solid black;
+
+    display: none;
+    overflow-x: auto;
+
+    & table {
+      //border: solid blue;
+
+      width: 100%;
+
+      @media screen and (min-width: 652px) {
+        @include table-dimension;
+      }
+
+      & thead {
+
+        th {
+          background: #f2f6f9 0% 0% no-repeat padding-box;
+          //border: 0.1em solid cyan;
+
+          font: Bold 14px/16px Arial;
+          letter-spacing: 0px;
+          color: #676c71;
+
+          div {
+            //border: solid blue 1px;
+          }
+
+          i {
+            font-size: 10px;
+            letter-spacing: 0px;
+            color: #707070;
+
+            //border: solid red 1px;
+          }
+
+          white-space: nowrap;
+
+          @media screen and (min-width: 652px) {
+            @include table-inner-dimension;
+          }
+
+          &:nth-child(4) {
+            //border: solid 1px red;
+            //text-align: right;
+
+            div {
+              //border: solid 1px green;
+            }
+          }
+        }
+      }
+
+      & tbody {
+
+        td {
+          //border: 0.1em solid yellow;
+
+          @media screen and (min-width: 652px) {
+            border-bottom: solid #e8eff6 1px;
+          }
+
+          background: rgb(242, 246, 249, 0.3) 0% 0% no-repeat padding-box;
+
+          font: normal 14px/16px Arial;
+          letter-spacing: 0px;
+          color: #000000;
+
+          white-space: nowrap;
+
+          @media screen and (min-width: 652px) {
+            @include table-inner-dimension;
+
+            &:nth-child(1) {
+              max-width: 0px;
+              width: 100%;
+              overflow: hidden;
+              text-overflow: ellipsis;
+
+              //background: lightpink;
+            }
+
+            &:nth-child(1) div {
+              //border: solid 1px purple;
+            }
+
+            &:nth-child(1) i {
+              font-size: 14px;
+              letter-spacing: 0px;
+              color: #ff0000;
+            }
+
+
+            &:nth-child(4) {
+              //border: solid 1px magenta;
+              display: flex;
+              justify-content: space-between;
+            }
+
+            &:nth-child(4) i {
+              font-size: 14px;
+              letter-spacing: 0px;
+              color: #676c71;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-name {
+    //border: solid magenta;
+
+    font: Bold 14px/16px Arial;
+    letter-spacing: 0px;
+    color: #417bca;
+
+    display: flex;
+
+    &::after {
+      font-family: "Font Awesome 5 Free";
+      //font-weight: 900;
+      //font-size: 10px;
+      content: "\f077";
+
+      font-size: 10px;
+      letter-spacing: 0px;
+      color: #707070;
+
+      display: flex;
+      margin-left: auto;
+      align-items: center;
+    }
+  }
+
+  //checked checkbox
+  & .accordion-toggle:checked~& {
+    &-spacefiller {
+      display: none;
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      position: relative;
+    }
+
+    &-name {
+      &::after {
+        transform: rotate(180deg);
+      }
+
+      padding-bottom: $accordion-item-padding-bottom;
+    }
+  }
+}
+
+/*buttons*/
+.buttons {
+  //border: solid orange;
+  background: #f2f6f9 0% 0% no-repeat padding-box;
+
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+
+  @media screen and (min-width: 652px) {}
+
+  @media screen and (max-width: 950px) {
+    flex-direction: column;
+  }
+
+  .button1 {
+    //border: solid teal;
+
+    font: Bold 13px/15px Arial;
+    letter-spacing: 0px;
+    color: #417bca;
+
+    @media screen and (min-width: 652px) {
+      @include button-dimension;
+      flex-shrink: 0;
+    }
+
+    @media screen and (max-width: 652px) {}
+  }
+
+  .button2 {
+    //border: solid teal;
+
+    font: Bold 13px/15px Arial;
+    letter-spacing: 0px;
+    color: #417bca;
+
+    @media screen and (min-width: 652px) {
+      @include button-dimension;
+      flex-shrink: 0;
+
+      margin-right: 20px;
+    }
+  }
+
+  .button3 {
+    //border: solid teal;
+
+    font: Bold 13px/15px Arial;
+    letter-spacing: 0px;
+    color: #ffffff;
+
+    @media screen and (min-width: 652px) {
+      width: $button-width;
+      height: $button-height;
+      margin-top: $button-margin-top;
+      margin-bottom: $button-margin-bottom;
+
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      white-space: nowrap;
+
+
+      flex-shrink: 0;
+      margin-right: 20px;
+
+      background: #8b9298 0% 0% no-repeat padding-box;
+      border: 1px solid #417bca;
+      border-radius: 2px;
+
+    }
+
+    @media screen and (max-width: 652px) {
+      display: flex;
+      justify-content: center;
+      padding-top: 9px;
+      padding-bottom: 9px;
+
+      background: #8b9298 0% 0% no-repeat padding-box;
+      border: 1px solid #417bca;
+      border-radius: 2px;
+      margin-top: 10px;
+      //border: solid red;
+
+      width: 100%;
+    }
+  }
+
+  .button-text1 {
+    //border: solid teal;
+
+    font: Bold 14px/16px Arial;
+    letter-spacing: 0px;
+    color: #676c71;
+
+    @media screen and (min-width: 652px) {
+      @include button-dimension;
+
+      margin-left: 20px;
+      min-width: 110px;
+
+      width: auto;
+
+      div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    @media screen and (max-width: 652px) {}
+
+    @media screen and (max-width: 950px) {
+      //margin-bottom: 0px;
+    }
+
+  }
+
+  .button-text2 {
+    //border: solid darkmagenta;
+
+    font: Bold 14px/16px Arial;
+    letter-spacing: 0px;
+    color: #676c71;
+
+    @media screen and (min-width: 652px) {
+      @include button-dimension;
+
+      margin-left: 20px;
+      min-width: 110px;
+
+      div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      @media screen and (max-width: 950px) {
+        width: min-content;
+      }
+
+    }
+  }
+
+  .button-group-1 {
+    //border: solid darkgoldenrod;
+    display: flex;
+
+    @media screen and (min-width: 652px) {
+
+      white-space: nowrap;
+      width: 50%;
+      flex-grow: 1;
+
+      justify-content: flex-start;
+
+
+      .or {
+        display: inline-block;
+        margin-left: 10px;
+        margin-right: 10px;
+
+        font: normal normal bold 14px/16px Arial;
+        color: #676C71;
+      }
+
+      .tip {
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 1px dashed #417BCA;
+        border-radius: 2px;
+
+        font: normal normal bold 13px/15px Arial;
+        color: #417BCA;
+
+        margin-top: $button-margin-top;
+        margin-bottom: $button-margin-bottom;
+
+        @media screen and (max-width: 950px) {
+          margin-right: 20px;
+        }
+
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 189px;
+        height: 33px;
+      }
+
+    }
+
+    @media screen and (max-width: 950px) {
+      width: 100%;
+    }
+  }
+
+  .button-group-2 {
+    //border: solid darkblue;
+    display: flex;
+
+    @media screen and (min-width: 652px) {
+
+      width: min-content;
+      justify-content: flex-end;
+
+      @media screen and (max-width: 950px) {
+        //background: red;
+        justify-content: space-between;
+
+        width: 100%;
+
+
+      }
+    }
+  }
+
+  .button-group-2-inner {
+    //border: solid gold;
+
+    @media screen and (max-width: 950px) {
+      display: flex;
+      width: 50%;
+      flex-grow: 1;
+    }
+
+    @media screen and (min-width: 652px) {
+      display: flex;
+    }
+
+    @media screen and (max-width: 652px) {
+      display: flex;
+      flex-grow: 1;
+    }
+
+  }
+}
+
+
+
+/*miscell*/
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+//no flicker
+button {
+  padding: 0;
+  border: 0;
+  background: 0;
+}
+
+::ng-deep * {
+  box-sizing: border-box;
+}

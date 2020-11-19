@@ -1,0 +1,41 @@
+<div class="popup-background">
+    <div *ngIf="showMainModel" class="modal" id="popup-modal-rw">
+        <div class="modal-header"> Document Type </div>
+
+        <div class="modal-item-list">
+            <div class="modal-item" *ngFor="let thisModal of sentModalData; let i = index">
+                <div class="document-type"> {{ thisModal.documentType }} </div>
+                <input id="modalradio{{i}}" type="radio" name="modalradio" (click)='selectType(i)' />
+                <label class="checkmark" for="modalradio{{i}}"></label>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="button-modal1" (click)='hide()'> Cancel </button>
+            <button class="button-modal2" (click)='sendSelectedDocumentType()'> Confirm </button>
+        </div>
+    </div>
+
+    <div *ngIf="uploadStatus" class="modal" id="uploading">
+        <i class="fas fa-spinner"></i>
+        <div (click)='hide()'>Uploading</div>
+    </div>
+
+    <div *ngIf="deleteStatus" class="modal" id="delete">
+        <div class="modal-header"> Delete File </div>
+
+        <div class="modal-delete-content">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div class="question">Delete the file {{sendDelRow.fileName}} ?</div>
+            <div class="alert">
+                <input type="checkbox" id='dontshowagain'>
+                <div class="alert-text"> Do not show this message again </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="button-modal1" (click)='hide()'> Cancel </button>
+            <button class="button-modal2" (click)='delFile(); hide()'> Delete </button>
+        </div>
+    </div>
+</div>

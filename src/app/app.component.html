@@ -1,0 +1,102 @@
+<div class="main-item" id="lol1">
+
+  <div class="main-item-header">RW drive</div>
+
+  <div class="accordion-list">
+    <div class="accordion-item" *ngFor="let thisAccordion of accordionList; let i = index">
+      <input id="checkbox{{i}}" type="checkbox" class="accordion-toggle" checked />
+      <label class="accordion-item-name" for="checkbox{{i}}">{{ thisAccordion.accordionName }}</label>
+      <div class="accordion-item-spacefiller"></div>
+
+      <div class="accordion-item-content" id="lol2">
+        <table id="lol3">
+          <thead>
+            <tr>
+              <th>
+                <div>File Name</div>
+                <button>
+                  <i class="fas fa-long-arrow-alt-down"></i>
+                </button>
+              </th>
+              <th>
+                <div>File Size</div>
+                <button>
+                  <i class="fas fa-long-arrow-alt-down"></i>
+                </button>
+              </th>
+              <th>
+                <div>Upload time</div>
+                <button>
+                  <i class="fas fa-long-arrow-alt-down"></i>
+                </button>
+              </th>
+              <th>
+                <div>Actions</div>
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let accordionRow of thisAccordion.accordionContent; let rowI = index">
+              <td>
+                <i class="fas fa-file-pdf"></i>
+                <div>{{accordionRow.fileName}}</div>
+              </td>
+              <td>{{accordionRow.fileSize}}</td>
+              <td>{{accordionRow.uploadTime}}</td>
+              <td>
+                <button (click)='showDelete(accordionRow, i, rowI)'>
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+                <div class="mobile-actionbar-filler"></div>
+                <button (click)='download()'>
+                  <i class="fas fa-download"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="buttons" id="lol4">
+          <div class="button-group-1">
+            <div class="button-text1">
+              <!-- <div> Upload new fileUpload new fileUpload new fileUpload new fileUpload new fileUpload new fileUpload new fileUpload new file </div>
+              -->
+              <div id="filelist{{i}}"> Upload new file </div>
+            </div>
+            <button class="button1">
+              <input id="selectfile{{i}}" type="file" (change)='getfile($event, i)' />
+              <label for="selectfile{{i}}">Select File</label> </button>
+            <div class="dragdroptip">
+              <div class="or">or</div>
+              <div class="tip">Drag and Drop File Here</div>
+            </div>
+          </div>
+          <div class="button-group-2">
+            <div class="button-group-2-inner">
+              <div class="button-text2">
+                <!-- <div> Document typeDocument typeDocument typeDocument typeDocument typeDocument typeDocument typeDocument typeDocument type </div>
+                -->
+                <div id="dtype{{i}}"> Document type </div>
+              </div>
+              <button class="button2" (click)='showPopup(thisAccordion.modalContent, i)'> Select Type </button>
+            </div>
+            <button class="button3" (click)='showUpload(i)'> Upload </button>
+          </div>
+
+        </div>
+
+        <!-- fileupload component -->
+        <app-fileupload #fUpload [filecompInstance]=i (onUploadDragDrop)="DragDropFile($event)">
+        </app-fileupload>
+      </div>
+
+    </div>
+  </div>
+
+  <app-popup *ngIf="isShowPopup || isUploading || isDelete" [sentModalData]="modalData" [sendAccordionIndex]="accordionIndex"
+    (onCloseModal)="hidePopup()" [uploadStatus]="isUploading" [deleteStatus]="isDelete" [sendDelRow]="sdDelRow"
+    (onSelectDocumentType)="selectDocumentType($event)" (onDeleteFile)="deleteFileRow($event)">
+  </app-popup>
+
+</div>

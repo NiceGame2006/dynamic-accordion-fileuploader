@@ -1,0 +1,38 @@
+<!-- grey and blue menu-->
+<div *ngIf="isShowComp" class="uploadfilecontainer" id="lol5" [ngClass]="{'windowdragover': isShowComp, 'areadragover': isDropZoneDragOver}">
+    <input hidden type="file">
+
+    <div class="background-filler">
+        <i class="fas fa-file-upload"></i>
+        <div class="fileuploadtext">Drag and Drop File Here</div>
+    </div>
+</div>
+
+
+<!-- uploading -->
+<div *ngIf="isLoading" class="uploadfilecontainer">
+    <div class="uploading">
+        <i class="fas fa-spinner"></i>
+        <div (click)='upLeave()'>Uploading...</div>
+    </div>
+</div>
+
+
+<!-- fail to upload -->
+<div *ngIf="isFailUpload" class="uploadfilecontainer">
+    <div class="failupload">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>Failed to upload. Please try again!</div>
+        <button (click)='failLeave()'>OK</button>
+    </div>
+</div>
+
+
+<!-- upload not supported -->
+<div *ngIf="isNotSupport" class="uploadfilecontainer">
+    <div class="notsupported">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>Failed to upload. The file format is not supported. Supported file formats: jpeg, png and pdf.</div>
+        <button (click)='notsupLeave()'>OK</button>
+    </div>
+</div>
